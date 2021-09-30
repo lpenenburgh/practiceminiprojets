@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300&display=swap');
+
+
+/* using * before curly brackets stlyes everything */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f9fafb;
+    font-family: 'Gemunu Libre', sans-serif;
+    /* to center everything */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color:#fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+
+}
+
+h2 {
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+.form {
+    padding: 30px 40px;
+}
+
+.formcontrol {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    /* using position relative because we eventually want to have the error messages as display: absolute. Since the error message is within the formcontrol- the formcontrol (aka its parent) must be relative */
+    position: relative;
+}
+
+.formcontrol label {
+    color: #777;
+    /* labels are display: inline by defult- so to get label on its own line, we use block */
+    display: block;
+    margin-bottom: 5px;
+}
+
+.formcontrol input {
+    font-family: 'Gemunu Libre', sans-serif;
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* to get rid of blue glow around input field when clicked, use outline:0. To change color of field when clicked, use border-color */
+.formcontrol input:focus {
+    outline: 0;
+    border-color: #777;
+}
+
+/* to change the border color state pending on if there is an error or not with user input. if the form control has a class of .success, green will be used, if it includes the class of .error, red will be used. These classes are added dynamically from JS  */
+.formcontrol.success input {
+    border-color: #2ecc71;
+}
+
+.formcontrol.error input {
+    border-color: #e74c3c;
+}
+
+.formcontrol small {
+    color: #e74c3c;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* use this instead of display: none b/c display:none will collapse anything around it, whereas this will just make it invisible and keep all placements */
+    visibility: hidden;
+}
+
+/* to show the small error message when its needed */
+.formcontrol.error small {
+    visibility: visible;
+}
+
+.form button {
+    cursor: pointer;
+    background-color: #3498db;
+    border: 2px solid #3498db;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    font-family: 'Gemunu Libre', sans-serif;
+    width: 100%;
+}    
