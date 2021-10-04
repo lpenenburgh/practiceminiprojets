@@ -36,6 +36,12 @@ select {
     appearance: none;
 }
 
+/* perspective- tilts the screen */
+.container {
+    perspective: 1000px;
+    margin-bottom: 30px;
+}
+
 .seat {
     background-color: #444451;
     height: 12px;
@@ -47,7 +53,85 @@ select {
     border-top-right-radius: 10px;
 }
 
+
+.seat.selected {
+    background-color: #6feaf6;
+}
+
+.seat.occupied {
+    background-color: white;
+}
+
+/* to create spacing between 2nd and 3rd seats using a psudo selector https://www.w3schools.com/cssref/sel_nth-of-type.asp */
+.seat:nth-of-type(2) {
+    margin-right: 18px;
+}
+
+/* to create spacing before the last two seats */
+.seat:nth-last-of-type(2) {
+    margin-left: 18px;
+}
+
+/* when pointer hovers over a seat that is not occupied, the seat gets slightly bigger (only to 1.2, 1 is the default in comparison */
+.seat:not(.occupied):hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+/* to exclude the showcase area from hover changes above */
+.showcase .seat:not(.occupied):hover {
+    cursor: default;
+    transform: scale(1);
+}
+
+
+.showcase {
+    /* to create a faint transparent background */
+    background: rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #777;
+    /*gets rid of bullet points */
+    list-style-type: none;
+    /* to display horizontally */
+    display: flex;
+    justify-content: space-between;
+}
+
+.showcase li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+}
+
+.showcase li small {
+    margin-left: 2px;
+}
+
 .row {
    /* to align the row of seats horizontally */
    display: flex; 
+}
+
+
+/* b/c the .screen div has no content in the html, adding height & width will allow us to see it */
+.screen {
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    margin: 15px 0;
+    /* 3d transform method. rotateZ rotates element around its X-axis at a given degree https://www.w3schools.com/css/css3_3dtransforms.asp */
+    transform: rotateX(-45deg);
+    /* gives  white blur effect around edges */
+    box-shadow: 0 3px 10px rgba(255, 255, 255,0.7);
+}
+
+p.text {
+    margin: 5px 0;
+}
+
+/* to color the dynamically changing seat and price numbers at bottom */
+p.text span {
+    color: #6feaf6;
 }
