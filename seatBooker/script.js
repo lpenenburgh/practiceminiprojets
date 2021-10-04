@@ -7,7 +7,7 @@ const total = document.getElementById("total");
 const movieSelect = document.getElementById("movie");
 
 // to change the movieSelect.value type from a string to a number, use +. (Could also wrap in parseInt)
-const ticketPrice = +movieSelect.value;
+let ticketPrice = +movieSelect.value;
 
 //console.log(typeof ticketPrice);
 
@@ -21,9 +21,14 @@ function updateSelectedCount() {
    total.innerText = selectedSeatsCount * ticketPrice;
 }
 
+// movie select event listener
+//change (instead of click) is used for dropdown
+movieSelect.addEventListener("change", e => {
+    ticketPrice = +e.target.value
+    updateSelectedCount();
+});
 
-
-//event listeners- adding it to the container instead of each seat 
+// seat click event listener- adding it to the container instead of each seat 
 container.addEventListener("click", (e) => {
     //conditional to target available seats only
     if(e.target.classList.contains("seat") && 
