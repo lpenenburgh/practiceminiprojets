@@ -6,6 +6,8 @@ const count = document.getElementById("count");
 const total = document.getElementById("total");
 const movieSelect = document.getElementById("movie");
 
+populateUI();
+
 // to change the movieSelect.value type from a string to a number, use +. (Could also wrap in parseInt)
 let ticketPrice = +movieSelect.value;
 
@@ -41,6 +43,28 @@ function updateSelectedCount() {
    total.innerText = selectedSeatsCount * ticketPrice;
 }
 
+// get data from local storage & populate UI
+// must use parse for populating since we used stringify to setItem to local Storage
+function populateUI() {
+    const selectedSeats = JSON.parse(localStorage.getItem("selectedSeats")
+    );
+
+    if(selectedSeats !== null && selectedSeats.length > 0) {
+        seats.forEach((seat, index) => {
+            if(selectedSeats.indexOf(index) > -1) {
+                seat.classList.add("selected");
+            }
+        });
+    }
+
+    const selectedMovieIndex = localStorage.getItem("selectedMovieIndex");
+
+    if(selectedMovieIndex !== null) {
+        movieSelect.selectedIndex = selectedMovieIndex;
+    }
+}
+
+
 // movie select event listener
 //change (instead of click) is used for dropdown
 movieSelect.addEventListener("change", e => {
@@ -60,3 +84,6 @@ container.addEventListener("click", (e) => {
         updateSelectedCount();
     }
 });
+
+//initial count and total set
+updateSelectedCount();
