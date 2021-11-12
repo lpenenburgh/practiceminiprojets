@@ -1,3 +1,5 @@
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Video_and_audio_APIs
+
 // variables
 const video = document.getElementById("video");
 const play = document.getElementById("play");
@@ -26,14 +28,32 @@ function updatePlayIcon() {
     }
 }
 
-//update progress & timestamp
+//update progress bar & timestamp
 function updateProgress() {
-    return true;
+    //setting progress bar value to the video current time divided by the video duration, times 100 to get a percentage value
+    progress.value = (video.currentTime / video.duration) *
+    100;
+
+    // Get minutes
+    let mins = Math.floor(video.currentTime / 60);
+    if (mins < 10) {
+        mins = '0' + String(mins);
+    }
+
+    //get seconds
+    let secs = Math.floor(video.currentTime % 60);
+    if (secs < 10) {
+        secs = '0' + String(secs);
+    }
+
+    timeStamp.innerHTML = `${mins}:${secs}`;
 }
 
-//set video time to progress
+//set video time to progress (if you clicked along the progress bar, the video should change to that point in time)
+// + insures its a number
 function setVideoProgress() {
-    return true;
+    video.currentTime = (+progress.value * video.duration) /
+    100;
 }
 
 //stop video
