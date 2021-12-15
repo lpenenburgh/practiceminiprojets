@@ -188,6 +188,7 @@ button:focus {
     right: 0;
 }
 
+/* defining modalopen animation */
 @keyframes modalopen {
     from {
         opacity: 0;
