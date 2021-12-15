@@ -31,6 +31,16 @@ async function getRandomUser() {
     addData(newUser);
 }
 
+// Double everyones money
+// using map instead of forEach- map returns a new array whereas forEach affects & changes the original array
+function doubleMoney () {
+    data = data.map((user) => {
+        return {...user, money: user.money * 2 };
+    });
+
+    updateDOM();
+}
+
 //Add new object to data array
 function addData(obj) {
     data.push(obj);
@@ -61,3 +71,4 @@ function formatMoney(number) {
 //Event Listeners
 
 addUserBtn.addEventListener('click', getRandomUser);
+doubleBtn.addEventListener('click', doubleMoney);
