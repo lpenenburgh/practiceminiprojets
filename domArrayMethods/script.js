@@ -57,6 +57,19 @@ function showMillionaires() {
     updateDOM();
 }
 
+// Calculate total wealth using reduce function
+function calculateWealth() {
+    // reduce function takes in accumulator and user. Then returns the accumulated result with user.money appended on b/c user is the object, whereas is money is the value we actually want. Starts @ 0
+    const wealth = data.reduce((acc, user) => (acc += 
+    user.money), 0);
+
+    // putting it in the dom
+    const wealthEl = document.createElement('div');
+    wealthEl.innerHTML = `<h3>Total Wealth: <strong>${formatMoney(wealth)}</strong></h3>`;
+    main.appendChild(wealthEl);
+
+} 
+
 //Add new object to data array
 function addData(obj) {
     data.push(obj);
@@ -90,3 +103,4 @@ addUserBtn.addEventListener('click', getRandomUser);
 doubleBtn.addEventListener('click', doubleMoney);
 sortBtn.addEventListener('click', sortByRichest);
 showMillionairesBtn.addEventListener('click', showMillionaires);
+calculateWealthBtn.addEventListener('click', calculateWealth);
