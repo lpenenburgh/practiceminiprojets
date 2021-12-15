@@ -36,7 +36,16 @@ async function getRandomUser() {
 function doubleMoney () {
     data = data.map((user) => {
         return {...user, money: user.money * 2 };
+        // used spread operator so the new data object still includes name by copying over everything from the user object and then overriding the money property
     });
+
+    updateDOM();
+}
+
+// Sort users by richest
+// in descending compare operator used b.money instead of just b-a because theyre objects, not single numbers
+function sortByRichest() {
+    data.sort((a, b) => b.money - a.money);
 
     updateDOM();
 }
@@ -72,3 +81,4 @@ function formatMoney(number) {
 
 addUserBtn.addEventListener('click', getRandomUser);
 doubleBtn.addEventListener('click', doubleMoney);
+sortBtn.addEventListener('click', sortByRichest);
