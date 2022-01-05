@@ -39,8 +39,53 @@ function displayWord() {
     if(innerWord === selectedWord) {
         finalMessage.innerText = 'You Won!';
         popup.style.display = 'flex';
-    }
-    
+    }   
 }
+
+
+// update the wrong letters array
+function updateWrongLettersEl() {
+    console.log('update wrong');
+}
+
+
+//show notification- add'show' class to notification element and then remove after 2 seconds
+function showNotification() {
+    notification.classList.add('show');
+
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 2000);
+}
+
+// Keydown letter press. Each letter on the keyboard has a keycode. Since we only want letters we would be looking for keycodes in the range of 65(A) and 90(z). 
+window.addEventListener('keydown', e => {
+    //console.log(e.keyCode);
+    if (e.keyCode >= 65 && e.keyCode <=90) {
+        // store key they entered in variable letter
+        const letter = e.key;
+
+        // if the  selected word includes the key the user chose, we want to push the letter onto the correctLetters array (if its not already there)
+        if(selectedWord.includes(letter)) {
+            if(!correctLetters.includes(letter)) {
+                correctLetters.push(letter);
+
+                //now update the wordEl to show the new letter
+                displayWord();
+            } else {
+                showNotification();
+            }
+        // otherwise push incorrect letter to wrongLetters array (as long as that letter wasnt already there)
+        } else {
+             if(!wrongLetters.includes(letter)) {
+                 wrongLetters.push(letter);
+
+                 updateWrongLettersEl();
+             } else {
+                 showNotification();
+             }
+        }
+    }
+});
 
 displayWord();
