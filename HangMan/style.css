@@ -1,0 +1,12 @@
+body {
+    background-color: #34495e;
+    color: white;
+}
+
+/* svg- shapes have fills- lines have strokes  */
+.figure-container {
+    fill: transparent;
+    stroke: #fff;
+    stroke-width: 4px;
+    stroke-linecap: round; /* rounds the ends of the line */
+}

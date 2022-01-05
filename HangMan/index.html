@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Hangman</title>
+</head>
+<body>
+    <h1>Hangman</h1>
+    <p>Find the hidden word- enter a letter</p>
+    <div class="game-container">
+        <!--svg is like a canvas so we want to give it a size. Within the tag you can create lines and circles
+        x1= start of line on x axis
+        y1= start of the y axis
+        x2= where line ends on x axis
+        y2= where line ends on y axis
+    -->
+        <svg height="250" width="200"   class="figure-container">
+            <line x1="60" y1="20" x2="140" y2="20" />
+        </svg>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
