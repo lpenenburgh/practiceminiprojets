@@ -10,3 +10,7 @@ body {
     stroke-width: 4px;
     stroke-linecap: round; /* rounds the ends of the line */
 }
+
+.figure-part {
+    display: none;
+}
